@@ -39,14 +39,40 @@ export default function Bootcamp() {
     phone: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsDialogOpen(false);
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', phone: '' });
-    }, 2000);
+    
+    try {
+      const response = await fetch(
+        'https://thefairagent.app.n8n.cloud/webhook/captacion-leads',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            tipo_formulario: 'bootcamp',
+            nombre: formData.name,
+            correo: formData.email,
+            telefono: formData.phone,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsDialogOpen(false);
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '', phone: '' });
+        }, 2000);
+      } else {
+        alert('Error al enviar');
+      }
+    } catch (error) {
+      console.error('[v0] Error:', error);
+      alert('Error al enviar');
+    }
   };
   return (
     <section id="bootcamp" className="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
