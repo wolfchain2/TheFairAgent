@@ -84,14 +84,6 @@ export default function Investors() {
                   Solicitar Deck de Inversores
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-6 rounded-full text-base font-medium transition-all duration-300"
-                >
-                  <Mail className="mr-2 w-4 h-4" />
-                  Contactar con IR
-                </Button>
               </div>
             </div>
 
