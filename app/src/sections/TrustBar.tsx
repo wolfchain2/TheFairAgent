@@ -24,11 +24,11 @@ const certifications = [
 ];
 
 const partners = [
-  'Microsoft',
-  'AWS',
-  'Google Cloud',
-  'OpenAI',
-  'Snowflake',
+  'CABA INC',
+  'NKLABE ENERGY',
+  'CON AROMA DE CAFE',
+  'DHD DUBAI',
+  'CACAO MAKUARE',
   'Databricks',
 ];
 
