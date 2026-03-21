@@ -1,6 +1,16 @@
+import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Users, Clock, Zap, ArrowRight } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Users, Clock, Zap, ArrowRight, Mail, Phone, User, CheckCircle } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
 const features = [
   {
@@ -21,6 +31,23 @@ const features = [
 ];
 
 export default function Bootcamp() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+    setTimeout(() => {
+      setIsDialogOpen(false);
+      setIsSubmitted(false);
+      setFormData({ name: '', email: '', phone: '' });
+    }, 2000);
+  };
   return (
     <section id="bootcamp" className="py-24 lg:py-32 bg-gradient-to-b from-white to-slate-50">
       <div className="section-padding">
@@ -94,6 +121,7 @@ export default function Bootcamp() {
 
               {/* CTA Button */}
               <Button
+                onClick={() => setIsDialogOpen(true)}
                 size="lg"
                 className="w-full bg-cyan-500 hover:bg-cyan-400 text-[#0A1628] px-8 py-6 rounded-full text-base font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/25 group"
               >
@@ -111,6 +139,103 @@ export default function Bootcamp() {
           </div>
         </div>
       </div>
+
+      {/* Registration Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-center">
+              {isSubmitted ? '¡Reserva Confirmada!' : 'Inscríbete al Bootcamp PYMES'}
+            </DialogTitle>
+            <DialogDescription className="text-center">
+              {isSubmitted
+                ? 'Tu reserva ha sido registrada. Nos pondremos en contacto pronto.'
+                : 'Completa tus datos para reservar tu lugar en el bootcamp de 1 semana'}
+            </DialogDescription>
+          </DialogHeader>
+
+          {isSubmitted ? (
+            <div className="flex justify-center py-6">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-green-600" />
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <Label htmlFor="bootcamp-name" className="text-sm font-medium text-slate-700">
+                  Nombre completo *
+                </Label>
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="bootcamp-name"
+                    placeholder="Tu nombre completo"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    className="pl-10 h-12 rounded-xl border-slate-200 focus:border-cyan-500 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="bootcamp-email" className="text-sm font-medium text-slate-700">
+                  Correo electrónico *
+                </Label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="bootcamp-email"
+                    type="email"
+                    placeholder="tu@empresa.com"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="pl-10 h-12 rounded-xl border-slate-200 focus:border-cyan-500 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="bootcamp-phone" className="text-sm font-medium text-slate-700">
+                  Teléfono (WhatsApp) *
+                </Label>
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                  <Input
+                    id="bootcamp-phone"
+                    type="tel"
+                    placeholder="+34 600 000 000"
+                    value={formData.phone}
+                    onChange={(e) =>
+                      setFormData({ ...formData, phone: e.target.value })
+                    }
+                    className="pl-10 h-12 rounded-xl border-slate-200 focus:border-cyan-500 focus:ring-cyan-500"
+                    required
+                  />
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full bg-cyan-500 hover:bg-cyan-400 text-[#0A1628] h-12 rounded-xl text-base font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/25"
+              >
+                Confirmar Reserva
+              </Button>
+
+              <p className="text-center text-xs text-slate-400">
+                * Campos requeridos
+              </p>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
