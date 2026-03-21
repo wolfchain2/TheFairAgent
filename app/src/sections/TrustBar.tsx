@@ -29,7 +29,6 @@ const partners = [
   'CON AROMA DE CAFE',
   'DHD DUBAI',
   'CACAO MAKUARE',
-  'Databricks',
 ];
 
 export default function TrustBar() {
