@@ -32,14 +32,43 @@ export default function Contact() {
     phone: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsDialogOpen(false);
-      setIsSubmitted(false);
-      setFormData({ name: '', company: '', position: '', email: '', phone: '' });
-    }, 2000);
+    
+    try {
+      const response = await fetch(
+        'https://thefairagent.app.n8n.cloud/webhook-test/captacion-leads',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            tipo_formulario: 'evaluacion',
+            nombre: formData.name,
+            empresa: formData.company,
+            cargo: formData.position,
+            correo: formData.email,
+            telefono: formData.phone,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setIsDialogOpen(true);
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsDialogOpen(false);
+          setIsSubmitted(false);
+          setFormData({ name: '', company: '', position: '', email: '', phone: '' });
+        }, 2000);
+      } else {
+        alert('Error al enviar la solicitud. Intenta nuevamente.');
+      }
+    } catch (error) {
+      console.error('[v0] Error al enviar formulario:', error);
+      alert('Error al enviar la solicitud. Intenta nuevamente.');
+    }
   };
 
   const handleDownload = () => {

@@ -7,9 +7,7 @@ const footerLinks = {
     { label: 'Compliance ISO', href: '#' },
   ],
   contact: [
-    { label: 'soporte@thefairagent.com', href: 'mailto:soporte@thefairagent.com' },
-    { label: 'ventas@thefairagent.com', href: 'mailto:ventas@thefairagent.com' },
-    { label: 'prensa@thefairagent.com', href: 'mailto:prensa@thefairagent.com' },
+    { label: 'auditorcc@protonmail.com', href: 'mailto:auditorcc@protonmail.com' },
   ],
   social: [
     { icon: Linkedin, label: 'LinkedIn', href: '#' },

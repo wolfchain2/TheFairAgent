@@ -81,15 +81,7 @@ export default function Problem() {
             ))}
           </div>
 
-          {/* Visual */}
-          <div className="mt-16 relative rounded-2xl overflow-hidden">
-            <img
-              src="/images/problem-chaos.jpg"
-              alt="Organizational Chaos"
-              className="w-full h-auto"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/80" />
-          </div>
+
         </div>
       </div>
     </section>
