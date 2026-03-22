@@ -44,7 +44,7 @@ export default function Bootcamp() {
     
     try {
       const response = await fetch(
-        'https://thefairagent.app.n8n.cloud/webhook/captacion-leads',
+        'https://thefairagent.app.n8n.cloud/webhook-test/captacion-leads',
         {
           method: 'POST',
           headers: {
