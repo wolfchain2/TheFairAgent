@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Users, Clock, Zap, ArrowRight, Mail, Phone, User, CheckCircle, ShoppingCart, Cpu, TrendingUp, Lock } from 'lucide-react';
+import { Zap, ArrowRight, Mail, Phone, User, CheckCircle, ShoppingCart, Cpu, TrendingUp, Lock } from 'lucide-react';
 import {
   Dialog,
   DialogContent,

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { TrendingUp, Briefcase, Mail, FileText, ArrowRight } from 'lucide-react';
+import { TrendingUp, Briefcase, FileText, ArrowRight } from 'lucide-react';
 
 const highlights = [
   {
