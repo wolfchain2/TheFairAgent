@@ -124,8 +124,7 @@ export default function BootcampPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-16 lg:pt-20">
-      <section id="bootcamp" className="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section id="bootcamp" className="py-24 lg:py-32 bg-white relative overflow-hidden">
         {/* Gradient Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100/20 rounded-full blur-3xl"></div>

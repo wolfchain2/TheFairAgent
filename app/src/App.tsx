@@ -10,18 +10,16 @@ import Contact from './sections/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white pt-16 lg:pt-20">
-      <main>
-        <Hero />
-        <TrustBar />
-        <Problem />
-        <Solution />
-        <Methodology />
-        <Impact />
-        <Investors />
-        <Contact />
-      </main>
-    </div>
+    <>
+      <Hero />
+      <TrustBar />
+      <Problem />
+      <Solution />
+      <Methodology />
+      <Impact />
+      <Investors />
+      <Contact />
+    </>
   );
 }
 

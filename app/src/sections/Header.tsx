@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigation } from '@/AppRouter';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  const { navigateToBootcamp } = useNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,8 +24,8 @@ export default function Header() {
     }
   };
 
-  const navigateToBootcamp = () => {
-    navigate('/bootcamp');
+  const handleBootcampClick = () => {
+    navigateToBootcamp();
     setIsMobileMenuOpen(false);
   };
 
@@ -81,7 +81,7 @@ export default function Header() {
               Inversores
             </button>
             <button
-              onClick={navigateToBootcamp}
+              onClick={handleBootcampClick}
               className="text-sm font-medium text-slate-600 hover:text-cyan-600 transition-colors"
             >
               Bootcamp
@@ -142,7 +142,7 @@ export default function Header() {
             Inversores
           </button>
           <button
-            onClick={navigateToBootcamp}
+            onClick={handleBootcampClick}
             className="text-left text-base font-medium text-slate-700 hover:text-cyan-600 py-2"
           >
             Bootcamp
