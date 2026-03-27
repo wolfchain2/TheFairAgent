@@ -6,7 +6,7 @@ import { useNavigation } from '@/AppRouter';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { navigateToBootcamp } = useNavigation();
+  const { navigateToBootcamp, navigateToHome } = useNavigation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +29,22 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const handleHomeClick = () => {
+    navigateToHome();
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleAuditClick = () => {
+    navigateToHome();
+    setTimeout(() => {
+      const contactElement = document.getElementById('contacto');
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -41,7 +57,7 @@ export default function Header() {
         <nav className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={handleHomeClick}
             className="flex items-center gap-2 group"
           >
             <img
@@ -91,7 +107,7 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Button
-              onClick={() => scrollToSection('contacto')}
+              onClick={handleAuditClick}
               className="bg-[#0A1628] hover:bg-[#1e3a5f] text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-[#0A1628]/20"
             >
               Agenda tu Auditoría
@@ -148,7 +164,7 @@ export default function Header() {
             Bootcamp
           </button>
           <Button
-            onClick={() => scrollToSection('contacto')}
+            onClick={handleAuditClick}
             className="bg-[#0A1628] hover:bg-[#1e3a5f] text-white w-full rounded-full mt-2"
           >
             Agenda tu Auditoría

@@ -72,10 +72,30 @@ const pillars = [
 ];
 
 const techStack = [
-  { name: 'DeepSeek V3 & Qwen', role: 'Cerebro IA de Última Generación', icon: '🧠' },
-  { name: 'Odoo ERP', role: 'Corazón Gestión Empresarial', icon: '❤️' },
-  { name: 'n8n', role: 'Motor Automatización de Flujos', icon: '⚙️' },
-  { name: 'Supabase', role: 'Memoria Base de Datos Segura', icon: '💾' },
+  { 
+    name: 'Modelos IA', 
+    role: 'Cerebro IA de Última Generación',
+    icon: '🧠',
+    items: ['DeepSeek V3', 'Qwen', 'ChatGPT', 'Gemini', 'Kimi', 'Claude', 'Grok']
+  },
+  { 
+    name: 'ERP & CRM', 
+    role: 'Corazón Gestión Empresarial', 
+    icon: '❤️',
+    items: ['Odoo Community', 'ERPNext', 'Dolibarr ERP/CRM', 'Tryton']
+  },
+  { 
+    name: 'Automatización', 
+    role: 'Motor Automatización de Flujos', 
+    icon: '⚙️',
+    items: ['n8n', 'Make', 'Zapier']
+  },
+  { 
+    name: 'Vector Databases', 
+    role: 'Memoria Base de Datos Segura', 
+    icon: '💾',
+    items: ['Supabase', 'ChromaDB', 'Qdrant', 'Neo4j', 'NebulaGraph']
+  },
 ];
 
 export default function BootcampPage() {
@@ -209,7 +229,17 @@ export default function BootcampPage() {
                   <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6 hover:border-white/40 transition-all">
                     <div className="text-4xl mb-3">{tech.icon}</div>
                     <h4 className="font-bold text-lg mb-2">{tech.name}</h4>
-                    <p className="text-sm text-slate-300">{tech.role}</p>
+                    <p className="text-sm text-slate-300 mb-4">{tech.role}</p>
+                    {tech.items && (
+                      <ul className="space-y-1 text-xs text-slate-400">
+                        {tech.items.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-cyan-400 mt-0.5">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 ))}
               </div>
