@@ -69,7 +69,7 @@ export default function Hero() {
             <div className="relative animate-fade-in">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#0A1628]/10 border border-slate-200/60">
                 <img
-                  src="/images/hero-dashboard.jpg"
+                  src="/images/hero-growth-dashboard.jpg"
                   alt="Onyx Core Dashboard"
                   className="w-full h-auto"
                 />

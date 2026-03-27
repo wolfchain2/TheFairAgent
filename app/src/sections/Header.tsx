@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,11 @@ export default function Header() {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
     }
+  };
+
+  const navigateToBootcamp = () => {
+    navigate('/bootcamp');
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -72,6 +79,12 @@ export default function Header() {
               className="text-sm font-medium text-slate-500 hover:text-[#0A1628] transition-colors"
             >
               Inversores
+            </button>
+            <button
+              onClick={navigateToBootcamp}
+              className="text-sm font-medium text-slate-600 hover:text-cyan-600 transition-colors"
+            >
+              Bootcamp
             </button>
           </div>
 
@@ -127,6 +140,12 @@ export default function Header() {
             className="text-left text-base font-medium text-slate-500 hover:text-[#0A1628] py-2"
           >
             Inversores
+          </button>
+          <button
+            onClick={navigateToBootcamp}
+            className="text-left text-base font-medium text-slate-700 hover:text-cyan-600 py-2"
+          >
+            Bootcamp
           </button>
           <Button
             onClick={() => scrollToSection('contacto')}
