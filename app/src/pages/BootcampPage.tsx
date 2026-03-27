@@ -339,6 +339,5 @@ export default function BootcampPage() {
           </DialogContent>
         </Dialog>
       </section>
-    </div>
   );
 }
