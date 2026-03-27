@@ -91,7 +91,7 @@ const techStack = [
     items: ['n8n', 'Make', 'Zapier']
   },
   { 
-    name: 'Vector Databases', 
+    name: 'Databases', 
     role: 'Memoria Base de Datos Segura', 
     icon: '💾',
     items: ['Supabase', 'ChromaDB', 'Qdrant', 'Neo4j', 'NebulaGraph']
